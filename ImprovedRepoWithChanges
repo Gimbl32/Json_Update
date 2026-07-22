@@ -1,0 +1,95 @@
+using WebApplication1.Db;
+using WebApplication1.Models;
+
+
+namespace WebApplication1.Repository
+{
+    public class UserRepository : IRepository<User>
+    {
+        private readonly UserDataBase userDataBase;
+
+        private List<User> users;
+
+
+        public UserRepository()
+        {
+            userDataBase = new UserDataBase();
+
+            users = userDataBase.LoadUsers();
+        }
+
+
+
+        public bool AddNew(User newUser)
+        {
+            if (newUser == null)
+                return false;
+
+
+            newUser.Id = Guid.NewGuid();
+
+            users.Add(newUser);
+
+
+            userDataBase.SaveUsers(users);
+
+
+            return true;
+        }
+
+
+
+        public List<User> GetAll()
+        {
+            return users;
+        }
+
+
+
+        public User Get(Guid id)
+        {
+            return users.FirstOrDefault(x => x.Id == id);
+        }
+
+
+
+        public bool Delete(Guid id)
+        {
+            User user = users.FirstOrDefault(x => x.Id == id);
+
+
+            if (user == null)
+                return false;
+
+
+            users.Remove(user);
+
+
+            userDataBase.SaveUsers(users);
+
+
+            return true;
+        }
+
+
+
+        public bool Edit(Guid id, User newUserData)
+        {
+            User user = users.FirstOrDefault(x => x.Id == id);
+
+
+            if (user == null)
+                return false;
+
+
+            user.Name = newUserData.Name;
+            user.Email = newUserData.Email;
+
+
+            userDataBase.SaveUsers(users);
+
+
+            return true;
+        }
+    }
+}
