@@ -1,0 +1,217 @@
+План изучения C# ASP.NET Core для создания API
+
+1. Коллекции C#
+
+Изучить:
+- List<T>
+- Dictionary<TKey, TValue>
+- HashSet<T>
+
+Методы List:
+- Add()
+- Remove()
+- RemoveAt()
+- Find()
+- FirstOrDefault()
+- Contains()
+- Count()
+
+LINQ:
+- Where()
+- Select()
+- FirstOrDefault()
+- Any()
+- OrderBy()
+- ToList()
+
+Цель: уметь искать, фильтровать и изменять данные.
+
+
+2. Работа с файлами System.IO
+
+Изучить:
+File:
+- WriteAllText()
+- ReadAllText()
+- Exists()
+- Delete()
+
+Path:
+- Combine()
+- GetFullPath()
+
+Цель: создавать, читать и изменять файлы.
+
+
+3. JSON сериализация
+
+System.Text.Json
+
+Serialize:
+Объект C# -> JSON
+
+Deserialize:
+JSON -> объект C#
+
+Изучить:
+- JsonSerializer.Serialize()
+- JsonSerializer.Deserialize<T>()
+
+
+4. ООП и архитектура
+
+Изучить:
+- классы
+- свойства
+- методы
+- конструкторы
+- модификаторы доступа
+
+Принцип:
+Один класс = одна ответственность
+
+Архитектура:
+Controller
+    |
+Repository
+    |
+Storage / Database
+
+SOLID:
+- Single Responsibility Principle
+- Open Closed Principle
+- Liskov Substitution Principle
+- Interface Segregation Principle
+- Dependency Inversion Principle
+
+
+5. Интерфейсы
+
+Изучить:
+- interface
+- IRepository<T>
+
+Зачем:
+- разделение логики
+- замена реализации
+- удобное тестирование
+
+
+6. Dependency Injection
+
+Изучить:
+- AddSingleton()
+- AddScoped()
+- AddTransient()
+
+Понять кто создает объекты в приложении.
+
+Вместо:
+new UserRepository()
+
+ASP.NET Core создает зависимости сам.
+
+
+7. Жизненный цикл объектов
+
+Singleton:
+Один объект на всё приложение.
+
+Scoped:
+Один объект на HTTP запрос.
+
+Transient:
+Новый объект каждый раз.
+
+
+8. REST API и HTTP
+
+Методы:
+GET - получить данные
+POST - создать данные
+PUT - изменить данные
+DELETE - удалить данные
+
+Коды:
+200 OK
+201 Created
+400 Bad Request
+404 Not Found
+500 Internal Server Error
+
+
+9. Nullable и null
+
+Изучить:
+?
+??
+?.
+
+Понять работу с отсутствующими значениями.
+
+
+10. Async / Await
+
+Изучить:
+- Task
+- async
+- await
+
+Пример:
+File.ReadAllTextAsync()
+
+Зачем:
+эффективная работа API с большим количеством запросов.
+
+
+Путь обучения:
+
+Этап 1:
+- List
+- LINQ
+- File
+- JSON
+- Classes
+- Interfaces
+
+Этап 2:
+Создать проект:
+Controller
+ |
+IRepository
+ |
+Repository
+ |
+JSON Storage
+
+Этап 3:
+Добавить:
+- Dependency Injection
+- DTO
+- Validation
+
+Этап 4:
+Перейти к базам данных:
+- SQLite
+- PostgreSQL
+
+
+Практическое задание:
+
+Создать Product API:
+
+Product:
+- Id
+- Name
+- Price
+- Category
+
+Реализовать:
+GET all products
+GET product by id
+POST product
+PUT product
+DELETE product
+
+Хранение:
+products.json
